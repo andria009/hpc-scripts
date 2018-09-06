@@ -29,14 +29,17 @@ case $key in
 	srcHdfsFile="$2"
 	dstHdfsFile="$3"
 	ssh ulin01 "hdfs dfs -cp $srcHdfsFile $dstHdfsFile"
+	;;
     -cpp)
 	srcHdfsFile="$2"
 	dstHdfsFile="$3"
 	ssh ulin01 "hdfs dfs -cp -p $srcHdfsFile $dstHdfsFile"
+	;;
     -cpf)
 	srcHdfsFile="$2"
 	dstHdfsFile="$3"
 	ssh ulin01 "hdfs dfs -cp -f $srcHdfsFile $dstHdfsFile"
+	;;
     -rmr)
     	hdfsPath="$2"
     	ssh ulin01 "hdfs dfs -rm -r $hdfsPath"
@@ -52,5 +55,5 @@ case $key in
 	echo "hadoop-dfs -cpp [srcHdfsFile] [dstHdfsFile]"
 	echo "hadoop-dfs -cpf [srcHdfsFile] [dstHdfsFile]"
     	echo "hadoop-dfs -rmr [hdfsPath]"
-    ;;
+    	;;
 esac
