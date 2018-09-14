@@ -58,6 +58,7 @@ case $key in
 	echo "hadoop-dfs -cp [srcHdfsFile] [dstHdfsFile]"
 	echo "hadoop-dfs -cpp [srcHdfsFile] [dstHdfsFile]"
 	echo "hadoop-dfs -cpf [srcHdfsFile] [dstHdfsFile]"
+    	echo "hadoop-dfs -mkdir [hdfsPath]"
     	echo "hadoop-dfs -rmr [hdfsPath]"
     	;;
 esac
