@@ -40,6 +40,10 @@ case $key in
 	dstHdfsFile="$3"
 	ssh ulin01 "hdfs dfs -cp -f $srcHdfsFile $dstHdfsFile"
 	;;
+    -mkdir)
+	hdfsPath="$2"
+	ssh ulin01 "hdfs dfs -mkdir $hdfsPath"
+	;;
     -rmr)
     	hdfsPath="$2"
     	ssh ulin01 "hdfs dfs -rm -r $hdfsPath"
