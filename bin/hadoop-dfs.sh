@@ -53,7 +53,7 @@ case $key in
     	echo "hadoop-dfs -cat [hdfsFile]"
     	echo "hadoop-dfs -append [localFile] [hdfsFile]"
     	echo "hadoop-dfs -copyFromLocal [localFile] [hdfsFile]"
-    	echo "hadoop-dfs -copyToLocal [hdfsFile [localFile]"
+    	echo "hadoop-dfs -copyToLocal [hdfsFile] [localFile]"
     	echo "hadoop-dfs -ls [hdfsPath]"
 	echo "hadoop-dfs -cp [srcHdfsFile] [dstHdfsFile]"
 	echo "hadoop-dfs -cpp [srcHdfsFile] [dstHdfsFile]"
