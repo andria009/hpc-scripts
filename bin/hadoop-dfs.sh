@@ -48,6 +48,9 @@ case $key in
     	hdfsPath="$2"
     	ssh ulin01 "hdfs dfs -rm -r $hdfsPath"
     	;;
+    -expunge)
+        ssh ulin01 "hdfs dfs -expunge"
+        ;;
     *)    # unknown option
     	echo "usage:"
     	echo "hadoop-dfs -cat [hdfsFile]"
@@ -60,5 +63,6 @@ case $key in
 	echo "hadoop-dfs -cpf [srcHdfsFile] [dstHdfsFile]"
     	echo "hadoop-dfs -mkdir [hdfsPath]"
     	echo "hadoop-dfs -rmr [hdfsPath]"
+	echo "hadoop-dfs -expunge"
     	;;
 esac
