@@ -23,6 +23,9 @@ do
    ssh $host "userdel -r $user"
 done
 
+# delete the user on hdfs (if existed)
+ssh ulin01 "su hdfs -c \"hdfs dfs -rm -r /user/$user\""
+
 # inform new user and her initial password
 echo $user has been deleted.
 #EOF
