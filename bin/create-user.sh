@@ -50,7 +50,7 @@ if $userCreated; then
       ssh $host "hostname" > >(tee -a ${LOGFILE}) 2>&1
    done
 
-   ssh ulin01 'su hdfs -c "hdfs dfs -mkdir -p /user/$user; hdfs dfs -chown $user:$group"'
+   ssh ulin01 "su hdfs -c \"hdfs dfs -mkdir -p /user/$user; hdfs dfs -chown $user:$group /user/$user\""
 
 #   for f in passwd shadow
 #   do
