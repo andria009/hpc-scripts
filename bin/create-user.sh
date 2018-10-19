@@ -4,15 +4,16 @@
 # to create a new user named 'iamgroot' on groupid '1001' with uid '1101'
 # on all node listed in conf/hosts
 
-test $# -lt 3 && { echo >&2 "Usage: $0 HOSTLIST USER GID [UID]" ; exit 1 ; }
+test $# -lt 3 && { echo >&2 "Usage: $0 HOSTLIST USER EMAIL GID [UID]" ; exit 1 ; }
 
 #set -x
 
 # assign arguments as variables
 hosts=$1
 user=$2
-group=$3
-uid=$4
+email=$3
+group=$4
+uid=$5
 
 LOGFILE=log/create-user/$user.txt
 
@@ -20,7 +21,7 @@ LOGFILE=log/create-user/$user.txt
 test "x$uid" != "x" && uid="-u $uid"
 
 # create/add user on master node
-useradd -e `date -d "90 days" +"%Y-%m-%d"` $uid -g $group -m $user > >(tee -a ${LOGFILE}) 2>&1
+useradd -e `date -d "90 days" +"%Y-%m-%d"` $uid -g $group -c $email -m $user > >(tee -a ${LOGFILE}) 2>&1
 
 # add user to slurm group
 usermod -a -G slurm $user
@@ -81,10 +82,10 @@ if $userCreated; then
    chown $user:$group -R /home/$user/.ssh
 
    # inform new user and her initial password
-   echo $user with $passwd is created > >(tee -a ${LOGFILE}) 2>&1
+   echo $user : $email with $passwd is created > >(tee -a ${LOGFILE}) 2>&1
 else
    # inform that no user is created
    echo $user is not created.
-   echo >&2 "Usage: $0 HOSTLIST USER GID [UID]" ; exit 1 ;
+   echo >&2 "Usage: $0 HOSTLIST USER EMAIL GID [UID]" ; exit 1 ;
 fi
 #EOF
