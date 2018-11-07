@@ -83,6 +83,13 @@ if $userCreated; then
 
    # inform new user and her initial password
    echo $user : $email with $passwd is created > >(tee -a ${LOGFILE}) 2>&1
+   # send email to user
+      # send email to user
+   printf "Welcome to grid.lipi.go.id.
+A user has been created with
+   username = $user
+   password = $passwd
+Please refer to http://grid.lipi.go.id/main/navigate/info_usage_grid for the user guide." | mail -s "Welcome to grid.lipi.go.id" -r grid@mail.lipi.go.id -c grid@mail.lipi.go.id $email
 else
    # inform that no user is created
    echo $user is not created.
