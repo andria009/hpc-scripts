@@ -14,6 +14,7 @@ user=$2
 email=$3
 group=$4
 uid=$5
+login_node=[LOGINNODE]
 
 LOGFILE=log/create-user/$user.txt
 
@@ -80,6 +81,9 @@ if $userCreated; then
 
    # clean up, change all files ownership
    chown $user:$group -R /home/$user/.ssh
+
+   # force user change password on login node on its first login
+   ssh $login_node "chage -d 0 $user" > >(tee -a ${LOGFILE}) 2>&1
 
    # inform new user and her initial password
    echo $user : $email with $passwd is created > >(tee -a ${LOGFILE}) 2>&1
