@@ -1,0 +1,143 @@
+#
+# Create queues and set their attributes.
+#
+#
+# Create and define queue admin
+#
+create queue admin
+set queue admin queue_type = Execution
+set queue admin enabled = True
+set queue admin started = True
+#
+# Create and define queue public
+#
+create queue public
+set queue public queue_type = Execution
+set queue public max_user_queuable = 4
+set queue public resources_max.nodes = 16
+set queue public resources_max.cput = 48:00:00
+set queue public resources_max.walltime = 72:00:00
+set queue public resources_default.neednodes = worker
+set queue public resources_default.nodes = 4
+set queue public resources_default.walltime = 24:00:00
+set queue public max_user_run = 2
+set queue public enabled = True
+set queue public started = True
+#
+# Create and define queue highmem
+#
+create queue highmem
+set queue highmem queue_type = Execution
+set queue highmem max_user_queuable = 4
+set queue highmem resources_max.nodes = 16
+set queue highmem resources_max.cput = 48:00:00
+set queue highmem resources_max.walltime = 72:00:00
+set queue highmem resources_default.neednodes = highmem
+set queue highmem resources_default.nodes = 1
+set queue highmem resources_default.walltime = 12:00:00
+set queue highmem enabled = True
+set queue highmem started = True
+#
+# Create and define queue gpu
+#
+create queue gpu
+set queue gpu queue_type = Execution
+set queue gpu max_user_queuable = 2
+#set queue gpu Priority = 100
+set queue gpu resources_max.nodes = 1
+set queue gpu resources_max.cput = 48:00:00
+set queue gpu resources_max.walltime = 72:00:00
+set queue gpu resources_default.neednodes = gpu
+set queue gpu resources_default.nodes = 1
+set queue gpu resources_default.walltime = 24:00:00
+set queue gpu enabled = True
+set queue gpu started = True
+set queue gpu features_required = gpu
+#
+# Create and define queue gpu2
+#
+create queue gpu2
+set queue gpu2 queue_type = Execution
+set queue gpu2 max_user_queuable = 2
+#set queue gpu2 Priority = 100
+set queue gpu2 resources_max.nodes = 1
+set queue gpu2 resources_max.cput = 48:00:00
+set queue gpu2 resources_max.walltime = 72:00:00
+set queue gpu2 resources_default.neednodes = gpu2
+set queue gpu2 resources_default.nodes = 1
+set queue gpu2 resources_default.walltime = 24:00:00
+set queue gpu2 enabled = True
+set queue gpu2 started = True
+set queue gpu2 features_required = gpu2
+#
+# Create and define queue dteam
+#
+create queue dteam
+set queue dteam queue_type = Execution
+set queue dteam resources_max.cput = 48:00:00
+set queue dteam resources_max.walltime = 72:00:00
+set queue dteam acl_group_enable = True
+set queue dteam acl_groups = dteam
+set queue dteam acl_groups += dteamsgm
+set queue dteam enabled = True
+set queue dteam started = True
+#
+# Create and define queue ops
+#
+create queue ops
+set queue ops queue_type = Execution
+set queue ops resources_max.cput = 48:00:00
+set queue ops resources_max.walltime = 72:00:00
+set queue ops acl_group_enable = True
+set queue ops acl_groups = ops
+set queue ops acl_groups += opssgm
+set queue ops enabled = True
+set queue ops started = True
+#
+# Create and define queue alice
+#
+create queue alice
+set queue alice queue_type = Execution
+set queue alice resources_max.cput = 48:00:00
+set queue alice resources_max.walltime = 72:00:00
+set queue alice acl_group_enable = True
+set queue alice acl_groups = alice
+set queue alice acl_groups += alicesgm
+set queue alice enabled = True
+set queue alice started = True
+#
+# Create and define queue default
+#
+create queue default
+set queue default queue_type = Execution
+set queue default resources_max.cput = 12:00:00
+set queue default resources_max.walltime = 24:00:00
+set queue default enabled = True
+set queue default started = True
+#
+# Set server attributes.
+#
+set server scheduling = True
+set server acl_host_enable = False
+set server acl_hosts = pengelola.cbg.grid.lipi.go.id
+set server acl_hosts += pengelola
+set server managers = grid@mail.lipi.go.id
+set server managers += root@pengelola.cbg.grid.lipi.go.id
+set server default_queue = default
+set server log_events = 511
+set server mail_from = adm
+set server scheduler_iteration = 600
+set server node_check_rate = 150
+set server tcp_timeout = 6
+set server default_node = worker
+set server node_pack = False
+set server job_stat_rate = 45
+set server poll_jobs = True
+set server mom_job_sync = True
+set server mail_domain = never
+set server kill_delay = 10
+set server submit_hosts = rumah.cbg.grid.lipi.go.id
+set server allow_node_submit = True
+set server next_job_number = 7739
+set server moab_array_compatible = True
+set server nppcu = 1

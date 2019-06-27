@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#PBS -N module-test
+
+#PBS -q public
+#PBS -l nodes=1
+#PBS -l walltime=1:00:00
+#PBS -k oe
+
+date
+hostname
+ls -l /etc/profile.d/lmod*
+id
+module avail
+sleep 30
+date

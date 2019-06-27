@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#PBS -N mpi-mpich_helloworld
+
+#PBS -q public
+#PBS -l nodes=4:ppn=28
+#PBS -l walltime=1:00:00
+#PBS -k oe
+
+NP=`wc -l $PBS_NODEFILE | awk '{print $1}'`
+
+module load mpich
+
+echo "Hostname = $HOSTNAME"
+echo "Number of nodes = $NP"
+echo "Start = `date`"
+
+mpirun -np $NP /home/grid/mpi-mpich_helloworld
+
+echo "Finish = `date`"

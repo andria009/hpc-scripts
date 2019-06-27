@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#PBS -N test
+#PBS -q public
+#PBS -l nodes=1
+#PBS -l walltime=1:00:00
+#PBS -k oe
+
+date
+hostname
+sleep 30
+date

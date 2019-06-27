@@ -1,0 +1,16 @@
+kuli01.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli02.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli03.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli04.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli05.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli06.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli07.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli08.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli09.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli10.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli11.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli12.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli13.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli14.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli15.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes
+kuli16.cbg.grid.lipi.go.id num_node_boards=1 np=28 worker lcgpro /var/lib/torque/server_priv/nodes

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#PBS -N mpi-openmpi_helloworld
+
+#PBS -q public
+#PBS -l nodes=16:ppn=28
+#PBS -l walltime=1:00:00
+#PBS -k oe
+
+NP=`wc -l $PBS_NODEFILE | awk '{print $1}'`
+
+module load openmpi
+
+echo "Hostname = $HOSTNAME"
+echo "Number of nodes = $NP"
+echo "Start = `date`"
+
+mpirun -np $NP -hostfile $PBS_NODEFILE /home/grid/mpi-openmpi_helloworld
+
+echo "Finish = `date`"
+

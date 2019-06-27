@@ -1,0 +1,3 @@
+# Configuration for pbs_mom.
+$pbsserver pengelola.cbg.grid.lipi.go.id
+$logevent  0x1ff

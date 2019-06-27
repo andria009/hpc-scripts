@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#PBS -N anaconda3
+#PBS -q public
+#PBS -l nodes=1
+#PBS -l walltime=1:00:00
+#PBS -k oe
+
+module load anaconda/3
+
+module list
+
+date
+echo =============================================
+hostname
+echo =============================================
+python -V
+python /home/grid/hello.py
+pip list
+echo =============================================
+date
