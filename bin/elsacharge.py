@@ -27,6 +27,8 @@ def elsa_charge(line):
         time  = line[line.index("resources_used.walltime")+24:-1]
 
         return user + ';' + queue + ';' + slots + ';' + time + ';' + str(count_charge(queue, node, slots, get_sec(time)))
+    else:
+        return ""
 
 dirPath = '/var/lib/torque/server_priv/accounting/'
 fileName = datetime.today().strftime('%Y%m%d')
@@ -41,13 +43,15 @@ while True:
             lastLine = line
             charge = elsa_charge(lastLine)
 
-            with open(fileName + '.elsa', 'w') as chareFile: 
-                chareFile.write(charge + '\n')
+            if charge != "":
+                print charge
+                with open(fileName + '.elsa', 'a+') as chareFile: 
+                    chareFile.write(charge + '\n')
 
         if datetime.today().strftime('%Y%m%d') != fileName:
             break
 
-        time.sleep(0.1)
+        time.sleep(1)
     
-    filePath = dirPath + datetime.today().strftime('%Y%m%d')
+    fileName = datetime.today().strftime('%Y%m%d')
 
