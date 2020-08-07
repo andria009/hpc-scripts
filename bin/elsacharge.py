@@ -3,6 +3,7 @@
 import time
 from datetime import datetime
 import subprocess
+import os.path
 
 def get_sec(time_str):
     """Get Seconds from time."""
@@ -38,18 +39,19 @@ while True:
     filePath = dirPath + fileName
 
     while True:
-        line = subprocess.check_output(['tail', '-1', filePath])
-        if line != lastLine:
-            lastLine = line
-            charge = elsa_charge(lastLine)
+        if os.path.isfile(filePath):
+            line = subprocess.check_output(['tail', '-1', filePath])
+            if line != lastLine:
+                lastLine = line
+                charge = elsa_charge(lastLine)
 
-            if charge != "":
-                print charge
-                with open(fileName + '.elsa', 'a+') as chareFile: 
-                    chareFile.write(charge + '\n')
+                if charge != "":
+                    print charge
+                    with open(fileName + '.elsa', 'a+') as chareFile: 
+                        chareFile.write(charge + '\n')
 
-        if datetime.today().strftime('%Y%m%d') != fileName:
-            break
+            if datetime.today().strftime('%Y%m%d') != fileName:
+                break
 
         time.sleep(1)
     
