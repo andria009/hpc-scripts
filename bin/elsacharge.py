@@ -18,6 +18,10 @@ def count_charge(queue, node, slots, time):
         return 10 * (int(node) * int(slots) * time * 0.1)
     elif (queue == 'gpu'):
         return 30 * (int(node) * int(slots) * time * 0.3)
+    elif (queue == 'free-cpu'):
+        return 0
+    elif (queue == 'free-cpu'):
+        return 0
 
 def elsa_charge(line):
     if ";E;" in lastLine:
