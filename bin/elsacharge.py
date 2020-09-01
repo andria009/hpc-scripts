@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 import subprocess
 import os.path
+import json
 
 def get_sec(time_str):
     """Get Seconds from time."""
@@ -31,7 +32,15 @@ def elsa_charge(line):
         slots = line[line.index("total_execution_slots")+22:line.index(" unique_node_count")]
         time  = line[line.index("resources_used.walltime")+24:-1]
 
-        return user + ';' + queue + ';' + slots + ';' + time + ';' + str(count_charge(queue, node, slots, get_sec(time)))
+        # return user + ';' + queue + ';' + slots + ';' + time + ';' + str(count_charge(queue, node, slots, get_sec(time)))
+        elsaC = dict()
+        elsaC['user'] = user
+        elsaC['queue'] = queue
+        elsaC['slots'] = int(slots)
+        elsaC['time'] = time
+        elsaC['points'] = count_charge(queue, node, slots, get_sec(time))
+        elsaC_json = json.dumps(elsaC)
+        return  elsaC_json
     else:
         return ""
 
