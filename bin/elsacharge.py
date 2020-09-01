@@ -38,7 +38,7 @@ def elsa_charge(line):
         elsaC['queue'] = queue
         elsaC['slots'] = int(slots)
         elsaC['time'] = time
-        elsaC['points'] = count_charge(queue, node, slots, get_sec(time))
+        elsaC['points'] = round(count_charge(queue, node, slots, get_sec(time)), 2)
         elsaC_json = json.dumps(elsaC)
         return  elsaC_json
     else:
