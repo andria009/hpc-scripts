@@ -1,0 +1,25 @@
+#!/bin/sh
+# 
+# $Id: mk_pbsacct,v 1.1.1.1 2006/03/13 18:31:16 bino Exp $
+# Script to make summary and report every month
+# 
+
+# verify the program path
+PROGRAM_PATH="/usr/local/sbin"
+# choose your program options
+OPTIONS="-a -b 10.0 -n 2 -c -s"
+# PBS accounting directory
+PBS_ACCT_DIR="/var/spool/torque/server_priv/accounting"
+# choose output path
+OUTPUT="/var/spool/torque/reports"
+
+# make a report
+PROGRAM="${PROGRAM_PATH}/pbsacct ${OPTIONS}"
+YEAR=`/bin/date +%Y`
+MONTH=`/bin/date +%m | awk '{printf("%2.2d\n", $1 - 1)}'`
+if [ ${MONTH} = "00" ]; then
+   MONTH=12
+   YEAR=`expr ${YEAR} - 1`
+fi
+
+cat ${PBS_ACCT_DIR}/${YEAR}${MONTH}* | ${PROGRAM} > ${OUTPUT}/sum.${YEAR}${MONTH}

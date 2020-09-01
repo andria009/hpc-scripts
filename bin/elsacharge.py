@@ -37,6 +37,7 @@ def elsa_charge(line):
 
 dirPath = '/var/lib/torque/server_priv/accounting/'
 fileName = datetime.today().strftime('%Y%m%d')
+outPath = '/var/log/elsa/'
 
 lastLine = None
 while True:
@@ -51,7 +52,7 @@ while True:
 
                 if charge != "":
                     print charge
-                    with open(fileName + '.elsa', 'a+') as chareFile: 
+                    with open(outPath + fileName + '.elsa', 'a+') as chareFile: 
                         chareFile.write(charge + '\n')
 
             if datetime.today().strftime('%Y%m%d') != fileName:
