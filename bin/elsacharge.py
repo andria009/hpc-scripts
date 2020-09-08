@@ -14,18 +14,19 @@ def get_sec(time_str):
 def count_charge(queue, node, slots, time):
     """Get ELSA charge"""
     if (queue == 'public'):
-        return 5 * (int(node) * int(slots) * time * 0.05)
+        return 5.0 * (int(node) * int(slots) * time * 0.05)
     elif (queue == 'gpu'):
-        return 10 * (int(node) * int(slots) * time * 0.1)
+        return 10.0 * (int(node) * int(slots) * time * 0.1)
     elif (queue == 'gpu'):
-        return 30 * (int(node) * int(slots) * time * 0.3)
+        return 30.0 * (int(node) * int(slots) * time * 0.3)
     elif (queue == 'free-cpu'):
-        return 0
+        return 0.0
     elif (queue == 'free-cpu'):
-        return 0
+        return 0.0
 
 def elsa_charge(line):
     if ";E;" in lastLine:
+        ended = line[0:line.index(";E;")]
         user  = line[line.index("user=")+5:line.index(" group")]
         queue = line[line.index("queue=")+6:line.index(" ctime")]
         node  = line[line.index("unique_node_count")+18:line.index(" end")]
@@ -38,6 +39,7 @@ def elsa_charge(line):
         elsaC['queue'] = queue
         elsaC['slots'] = int(slots)
         elsaC['time'] = time
+        elsaC['ended'] = ended
         elsaC['points'] = round(count_charge(queue, node, slots, get_sec(time)), 2)
         elsaC_json = json.dumps(elsaC)
         return  elsaC_json
@@ -70,4 +72,3 @@ while True:
         time.sleep(1)
     
     fileName = datetime.today().strftime('%Y%m%d')
-
