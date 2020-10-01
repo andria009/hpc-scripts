@@ -25,13 +25,13 @@ def count_charge(queue, node, slots, time):
         return 0.0
 
 def elsa_charge(line):
-    if ";E;" in lastLine:
+    if ";E;" in line:
         ended = line[0:line.index(";E;")]
         user  = line[line.index("user=")+5:line.index(" group")]
         queue = line[line.index("queue=")+6:line.index(" ctime")]
         node  = line[line.index("unique_node_count")+18:line.index(" end")]
         slots = line[line.index("total_execution_slots")+22:line.index(" unique_node_count")]
-        time  = line[line.index("resources_used.walltime")+24:-1]
+        time  = line[line.index("resources_used.walltime")+24:line.index("resources_used.walltime")+32]
 
         # return user + ';' + queue + ';' + slots + ';' + time + ';' + str(count_charge(queue, node, slots, get_sec(time)))
         elsaC = dict()
