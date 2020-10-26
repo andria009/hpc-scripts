@@ -17,7 +17,7 @@ def count_charge(queue, node, slots, time):
         return 5.0 * (int(node) * int(slots) * time * 0.05)
     elif (queue == 'gpu'):
         return 10.0 * (int(node) * int(slots) * time * 0.1)
-    elif (queue == 'gpu'):
+    elif (queue == 'multigpu'):
         return 30.0 * (int(node) * int(slots) * time * 0.3)
     elif (queue == 'free-cpu'):
         return 0.0
@@ -63,7 +63,7 @@ while True:
                 charge = elsa_charge(lastLine)
 
                 if charge != "":
-                    print charge
+                    # print charge
                     with open(outPath + fileName + '.elsa', 'a+') as chareFile: 
                         chareFile.write(charge + '\n')
 
