@@ -19,16 +19,16 @@ do
 		PID2=`ps -eo pcpu,pid -o comm= | sort -k1 -n -r | head -1 | awk '{print $2 }'`
 		PNAME2=`ps -eo pcpu,pid -o comm= | sort -k1 -n -r | head -1 | awk '{print $3 }'`
 		HOST=`hostname -s`
-		#UNAME=`ps -eo pcpu,pid,uname,uid | grep ${PID1} | awk '{print $3}'`
-		#EMAIL=`grep ${UNAME} /etc/passwd | awk -F: '{print $5}'`
+		UNAME=`ps -eo pcpu,pid,euser,uid | grep ${PID1} | awk '{print $3}'`
+		EMAIL=`grep ${UNAME} /etc/passwd | awk -F: '{print $5}'`
 
 		if [ $USAGE2 -gt 80 ] && [ $PID1 = $PID2 ]
 		then
 			kill -15 $PID1
-			#echo "${PNAME1} with ${PID1} that belongs to ${UNAME} (${EMAIL}) is hogging CPU. It is killed"
-			echo "${PNAME1} with ${PID1} is hogging CPU. It is killed"
-			#printf "${PNAME1} with ${PID1} that belongs to ${UNAME} (${EMAIL}) is hogging CPU. It is killed" | mail -s "CPU @${HOST} load of ${PNAME1} is above 80% and be killed" -r grid@mail.lipi.go.id -c grid@mail.lipi.go.id ${EMAIL}
-			printf "${PNAME1} with ${PID1} is hogging CPU. It is killed" | mail -s "CPU @${HOST} load of ${PNAME1} is above 80% and be killed" grid@mail.lipi.go.id
+			echo "${PNAME1} with ${PID1} that belongs to ${UNAME} (${EMAIL}) is hogging CPU. It is killed"
+			#echo "${PNAME1} with ${PID1} is hogging CPU. It is killed"
+			printf "${PNAME1} with ${PID1} that belongs to ${UNAME} (${EMAIL}) is hogging CPU. It is killed" | mail -s "CPU @${HOST} load of ${PNAME1} is above 80% and be killed" -r grid@mail.lipi.go.id -c grid@mail.lipi.go.id ${EMAIL}
+			#printf "${PNAME1} with ${PID1} is hogging CPU. It is killed" | mail -s "CPU @${HOST} load of ${PNAME1} is above 80% and be killed" grid@mail.lipi.go.id
 		fi
 	fi
 done
